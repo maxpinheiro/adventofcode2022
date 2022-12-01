@@ -3,14 +3,13 @@ def main():
     f = open('day1.txt', 'r')
     lines = [line.strip('\n') for line in f]
     calorieGroups = []
-    currCalories = []
+    currCalories = 0
     for idx, calorie in enumerate(lines):
         if calorie == '' or idx == len(lines) - 1:
-            calories = sum(currCalories)
-            calorieGroups.append(calories)
-            currCalories = []
+            calorieGroups.append(currCalories)
+            currCalories = 0
         else:
-            currCalories.append(int(calorie))
+            currCalories += int(calorie)
     calorieGroups = list(sorted(calorieGroups, reverse=True))
     maxCalories = calorieGroups[0]
     print(maxCalories)
